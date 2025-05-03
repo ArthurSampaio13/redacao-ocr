@@ -97,8 +97,27 @@ def detectar_areas_texto(imagem, debug=False, params=None):
             x, y, w, h = cv2.boundingRect(contorno)
             retangulos.append((x, y, w, h))
 
+    altura_img, largura_img = imagem.shape[:2]
+
+    marge_vertical = 0.34
+    marge_horizontal = 0.1
+
+    limite_cima = int(altura_img * marge_vertical)
+    limite_baixo = int(altura_img * (1 - marge_vertical))
+
+    limite_esq = int(largura_img * marge_horizontal)
+    limite_dir = int(largura_img * (1 - marge_horizontal))
+
     linhas = agrupar_por_linhas(retangulos, tolerancia_y=20)
-    todas_palavras = [agrupar_palavras(linha, distancia_x=30) for linha in linhas]
+
+    linhas_centro = []
+    for linha in linhas:
+        x_medio = sum([x + w // 2 for x, y, w, h in linha]) / len(linha)
+        y_medio = sum([y + h // 2 for x, y, w, h in linha]) / len(linha)
+        if limite_cima <= y_medio <= limite_baixo and limite_esq <= x_medio <= limite_dir:
+            linhas_centro.append(linha)
+
+    todas_palavras = [agrupar_palavras(linha, distancia_x=30) for linha in linhas_centro]
     todas_palavras = [palavra for linha in todas_palavras for palavra in linha]
 
     for x, y, w, h in todas_palavras:
