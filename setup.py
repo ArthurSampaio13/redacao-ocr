@@ -7,6 +7,7 @@ setup(
     install_requires=[
         "opencv-python>=4.5.0",
         "numpy>=1.20.0",
+        "rich"
     ],
     entry_points={
         "console_scripts": [

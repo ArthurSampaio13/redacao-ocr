@@ -7,4 +7,9 @@ from redacao_detector.detector import (
     processar_diretorio,
 )
 
-__all__ = ["corrigir_rotacao", "detectar_areas_texto", "processar_imagem", "processar_diretorio"]
+__all__ = [
+    "corrigir_rotacao",
+    "detectar_areas_texto",
+    "processar_imagem",
+    "processar_diretorio",
+]
