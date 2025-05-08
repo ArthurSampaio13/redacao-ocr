@@ -4,49 +4,14 @@ from redacao_detector.utils import (
     is_image_file,
     agrupar_por_linhas,
     agrupar_palavras,
-    calcular_angulo_medio,
 )
 
 
 def corrigir_rotacao(imagem):
-    img_copy = imagem.copy()
-
-    cinza = cv2.cvtColor(img_copy, cv2.COLOR_BGR2GRAY)
-
-    _, binario = cv2.threshold(cinza, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-
-    contornos, _ = cv2.findContours(binario, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-
-    angulos = []
-    for contorno in contornos:
-        if cv2.contourArea(contorno) < 100:
-            continue
-
-        rect = cv2.minAreaRect(contorno)
-
-        (x, y), (w, h), angulo = rect
-
-        if w < h:
-            angulo = angulo - 90
-
-        if abs(angulo) < 45:
-            angulos.append(angulo)
-
-    if not angulos:
-        return imagem
-
-    angulo_medio = calcular_angulo_medio(angulos)
-
     (h, w) = imagem.shape[:2]
-    centro = (w // 2, h // 2)
-
-    M = cv2.getRotationMatrix2D(centro, angulo_medio, 1.0)
-
-    imagem_corrigida = cv2.warpAffine(
-        imagem, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
-    )
-
-    return imagem_corrigida
+    if w > h:
+        imagem = cv2.rotate(imagem, cv2.ROTATE_90_CLOCKWISE)
+    return imagem
 
 
 def detectar_areas_texto(imagem, debug=False, params=None):

@@ -58,17 +58,3 @@ def agrupar_palavras(linha, distancia_x=30):
         resultado.append((x_min, y_min, x_max - x_min, y_max - y_min))
 
     return resultado
-
-
-def calcular_angulo_medio(angulos, filtrar_outliers=True):
-    if not angulos:
-        return 0
-
-    if filtrar_outliers and len(angulos) > 2:
-        angulos_sorted = sorted(angulos)
-
-        corte = max(1, int(len(angulos) * 0.1))
-        angulos_filtered = angulos_sorted[corte:-corte]
-        return np.mean(angulos_filtered)
-    else:
-        return np.mean(angulos)
