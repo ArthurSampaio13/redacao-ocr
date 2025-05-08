@@ -40,6 +40,10 @@
 git clone https://github.com/ArthurSampaio13/redacao-ocr.git
 cd redacao-detector
 
+# Instalação do uv (Caso não tenha)
+curl -LsSf https://astral.sh/uv/install.sh | sh # Para linux
+pip install uv ou winget install --id=astral-sh.uv  -e # Para Windows
+
 uv venv
 source venv/bin/activate  
 # ou para Windows
