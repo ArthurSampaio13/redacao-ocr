@@ -37,7 +37,7 @@ source venv/bin/activate
 venv\Scripts\activate 
 
 # Instale o pacote e suas dependências
-pip install -e .
+uv pip install -e .
 ```
 
 ## 💻 Uso
@@ -48,19 +48,19 @@ O Redação Detector pode ser usado diretamente pela linha de comando com vária
 
 ```bash
 # Processar uma única imagem
-redacao-detector --imagem caminho/para/imagem.jpg
+uv redacao-detector --imagem caminho/para/imagem.jpg
 
 # Processar um diretório com várias imagens
-redacao-detector --diretorio caminho/para/diretorio/
+uv redacao-detector --diretorio caminho/para/diretorio/
 
 # Definir um diretório de saída específico
-redacao-detector --imagem imagem.jpg --saida caminho/para/saida/
+uv redacao-detector --imagem imagem.jpg --saida caminho/para/saida/
 
 # Ativar o modo debug para visualizar imagens intermediárias
-redacao-detector --imagem imagem.jpg --debug
+uv redacao-detector --imagem imagem.jpg --debug
 
 # Apenas visualização (não salvar resultados)
-redacao-detector --imagem imagem.jpg --nao-salvar
+uv redacao-detector --imagem imagem.jpg --nao-salvar
 ```
 
 ### Como Biblioteca Python
