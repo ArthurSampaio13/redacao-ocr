@@ -45,9 +45,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh # Para linux
 pip install uv ou winget install --id=astral-sh.uv  -e # Para Windows
 
 uv venv
-source venv/bin/activate  
+source .venv/bin/activate  
 # ou para Windows
-venv\Scripts\activate 
+.venv\Scripts\activate 
 
 # Instale o pacote e suas dependências
 uv pip install -e .
@@ -67,19 +67,19 @@ O Redação Detector pode ser usado diretamente pela linha de comando com vária
 
 ```bash
 # Processar uma única imagem
-uv redacao-detector --imagem caminho/para/imagem.jpg
+redacao-detector --imagem caminho/para/imagem.jpg
 
 # Processar um diretório com várias imagens
-uv redacao-detector --diretorio caminho/para/diretorio/
+redacao-detector --diretorio caminho/para/diretorio/
 
 # Definir um diretório de saída específico
-uv redacao-detector --imagem imagem.jpg --saida caminho/para/saida/
+redacao-detector --imagem imagem.jpg --saida caminho/para/saida/
 
 # Ativar o modo debug para visualizar imagens intermediárias
-uv redacao-detector --imagem imagem.jpg --debug
+redacao-detector --imagem imagem.jpg --debug
 
 # Apenas visualização (não salvar resultados)
-uv redacao-detector --imagem imagem.jpg --nao-salvar
+redacao-detector --imagem imagem.jpg --nao-salvar
 ```
 
 ### Como Biblioteca Python
