@@ -1,7 +1,5 @@
 # Redação Detector
 
-![Redação Detector Banner](https://via.placeholder.com/800x200?text=Reda%C3%A7%C3%A3o+Detector)
-
 ## 📝 Sobre o Projeto
 
 **Redação Detector** é uma ferramenta para detectar e destacar áreas de texto em imagens de redações manuscritas. O software utiliza processamento de imagem e visão computacional para identificar regiões de texto, corrigir rotações e agrupar palavras em linhas.
@@ -33,7 +31,7 @@ cd redacao-detector
 
 uv venv
 source venv/bin/activate  
-# ou
+# ou para Windows
 venv\Scripts\activate 
 
 # Instale o pacote e suas dependências
@@ -43,6 +41,12 @@ uv pip install -e .
 ## 💻 Uso
 
 ### Linha de Comando
+
+## Arquitetura
+
+#### Uma arquitetura via CLI (Command Line Interface)
+![CLI](./.github/cli.png)
+
 
 O Redação Detector pode ser usado diretamente pela linha de comando com várias opções:
 
@@ -83,6 +87,9 @@ imagem_resultado = detectar_areas_texto(imagem_corrigida)
 
 ### API REST
 
+#### Arquitetura do Front-End
+![FrontEnd](./.github/front.png)
+
 Inicie o servidor FastAPI:
 
 ```bash
@@ -96,6 +103,10 @@ curl -X POST -F "file=@caminho/para/imagem.jpg" http://localhost:8000/processar-
 ```
 
 Ou usando qualquer cliente HTTP como Postman ou através de um frontend.
+
+### Também é possível utilizar pela Web
+#### Link do deploy: https://redacao-ocr-front-ywrd.vercel.app/ 
+>Talvez demore um pouco para processar sua imagem, pois estamos utilizando serviços gratuitos e as máquinas precisam ser inicializadas.
 
 ## 🔧 Parâmetros Customizáveis
 
