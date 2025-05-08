@@ -27,15 +27,14 @@
 ## 🚀 Instalação
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/redacao-detector.git
+
+git clone https://github.com/ArthurSampaio13/redacao-ocr.git
 cd redacao-detector
 
-# Crie um ambiente virtual (opcional, mas recomendado)
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
+uv venv
+source venv/bin/activate  
 # ou
-venv\Scripts\activate  # Windows
+venv\Scripts\activate 
 
 # Instale o pacote e suas dependências
 pip install -e .
